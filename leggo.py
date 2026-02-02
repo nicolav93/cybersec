@@ -1,5 +1,5 @@
 nomefile = "logfile.txt"
-try
+try:
   f = open(nomefile, "r", encoding= 'utf-8') 
   righe = f.readlines()
   for riga in righe:
