@@ -11,28 +11,29 @@ def main():
     f = open('logfile.txt', "w")
 
     f.write (f"server listening on {host} : {port}\n")
-    for i in range (6):
+    richiesta = ''
+    for i in range (10):
         conn, addr = server_socket.accept()
         f.write(f"connected by {addr}\n")
-
 
         try:
             while True:
                 data = conn.recv(1024)
                 if not data:
                     break    
-                richiesta= data.decode()
-                if richiesta == 'SHUTDOWN':
-                    break
-                risposta = f"ho ricevuto il messaggio: {richiesta}\n"
-                f.write(risposta)
-                conn.sendall(risposta.encode())
-            if richiesta == "SHUTDOWN":
-                break
-                
+                else:
+                    richiesta= data.decode()
+                    if richiesta == 'SHUTDOWN':
+                        exit()
+                    else:
+                        risposta = f"ho ricevuto il messaggio: {richiesta}\n"
+                        f.write(risposta)
+                        conn.sendall(risposta.encode())
 
         finally:
             conn.close()
+        if richiesta == 'SHUTDOWN':
+            break
     f.close()
     server_socket.close()
 
