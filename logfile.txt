@@ -1,0 +1,6 @@
+server listening on 127.0.0.1 : 6364
+connected by ('127.0.0.1', 61522)
+ho ricevuto il messaggio: CIAO
+connected by ('127.0.0.1', 61523)
+ho ricevuto il messaggio: MONDO
+connected by ('127.0.0.1', 61524)
