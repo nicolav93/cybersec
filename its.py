@@ -53,10 +53,12 @@ def main():
     print(f"Insegnante: {insegnante._nome} {insegnante._cognome}, materia: {insegnante._materia}, titolo: {insegnante._titolo}")
     print(f"tutor: {tu._nome} {tu._cognome}")
     print(f"\n--- STUDENTI ISCRITTI ({len(tu._registro)} in totale) ---")
+    formato = "%2d %-15s %-15s"
     for i,s in enumerate(tu._registro, 1):
-        print (f"{i}. {s._nome} {s._cognome}")
-        
+        print (formato % (i, s._cognome, s._nome))
+
 if __name__ == "__main__":    main()
+
 
 
 
