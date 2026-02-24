@@ -9,12 +9,17 @@ class docente(persona):
         self._materia = materia
         self._titolo= titolo
         self._corsi= []
+    def __repr__(self):
+        return f"Insegnante: {self._nome} {self._cognome}, materia: {self._materia}, titolo: {self._titolo}"
+    
 
 class allievo(persona):
     def __init__(self, nome, cognome):
         super().__init__(nome, cognome)
         self._corso= None
         self._orePresenza = 0
+    def __repr__(self):
+        return f"{self._cognome} {self._nome}"
 
 class tutor(persona):
     def __init__(self, nome, cognome, corso):
@@ -23,12 +28,16 @@ class tutor(persona):
         self._registro = []
     def appendToRegistro(self, allievo):
         self._registro.append(allievo)
+    def __repr__(self):
+        return f"{self._cognome} {self._nome}"
 
 class corso:
     def __init__(self, dicitura, edizione, dataInizio):
         self._dicitura = dicitura
         self._edizione = edizione
         self._dataInizio = dataInizio
+    def __repr__(self):
+        return f"Corso: {self._dicitura}, edizione: {self._edizione}, data inizio: {self._dataInizio}"
 
 def main():
 
@@ -49,16 +58,19 @@ def main():
         tu.appendToRegistro(nuovo_allievo)
 
     print("--- RIEPILOGO CORSO ---")
-    print(f"Corso: {program._dicitura}, edizione: {program._edizione}, data inizio: {program._dataInizio}")
-    print(f"Insegnante: {insegnante._nome} {insegnante._cognome}, materia: {insegnante._materia}, titolo: {insegnante._titolo}")
-    print(f"tutor: {tu._nome} {tu._cognome}")
+    print(program)
+    print(insegnante)
+    print(f"tutor: {tu}")
     print(f"\n--- STUDENTI ISCRITTI ({len(tu._registro)} in totale) ---")
+
     formato = "%2d %-15s %-15s"
+    print(formato % (0, "COGNOME", "NOME"))
+    print("-" * 45)
+
     for i,s in enumerate(tu._registro, 1):
         print (formato % (i, s._cognome, s._nome))
 
 if __name__ == "__main__":    main()
-
 
 
 
